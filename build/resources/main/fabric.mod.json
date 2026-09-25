@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "minezomboid",
+	"version": "1.0.0",
+	"name": "MineZomboid",
+	"description": "A hardcore server-side survival mod heavily inspired by Project Zomboid. It redefines Minecraft by implementing a realistic urban survival ecosystem: features fantasy mob filtering, hand-punching restrictions with localized bleeding mechanics, disabled passive health regeneration, and procedural urban generation using the Jigsaw system with data-driven asynchronous execution (Java 21 Virtual Threads).",
+	"authors": [
+		"Matheus-FSantos"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/minezomboid/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.minezomboid.MineZomboid"
+		],
+		"client": [
+			"io.github.minezomboid.client.MineZomboidClient"
+		],
+		"fabric-datagen": [
+			"io.github.minezomboid.client.MineZomboidDataGenerator"
+		]
+	},
+	"mixins": [
+		"minezomboid.mixins.json",
+		{
+			"config": "minezomboid.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

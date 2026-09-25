@@ -1,0 +1,52 @@
+# Contexto Atualizado do Projeto: MineZomboid Core (Minecraft 1.21)
+
+## 📌 Visão Geral do Projeto
+Desenvolvimento de um mod **Server-side** para Minecraft na versão **1.21** (utilizando **Java 21** e os **Mojang Mappings oficiais**), estruturado através da **Fabric API**. O objetivo é transformar o sandbox original em um simulador de sobrevivência hardcore e realista inspirado em **Project Zomboid**. O código segue padrões rigorosos de desenvolvimento backend corporativo (Clean Code, logging via SLF4J, encapsulamento por domínios) para atuar como um portfólio de engenharia de software de alto nível.
+
+---
+
+## 💡 Descobertas Técnicas e Regras do Ecossistema (Fabric 1.21)
+Durante a configuração do ambiente no macOS e o desenvolvimento inicial, mapeamos regras críticas da arquitetura do Fabric moderno que corrigiram erros de compilação anteriores:
+1.  **Split Sources (Módulos Separados):** O projeto utiliza separação física entre `main` (lógica do servidor/regras comuns) e `client` (reparos visuais/front-end).
+2.  **Sintaxe Baseada em Dados (Data-Driven 1.21):** O registro de itens foi modernizado. A criação de IDs não aceita mais `new Identifier()`, utilizando agora a factory estática de localização de recursos nativa da Mojang: `ResourceLocation.fromNamespaceAndPath()`.
+3.  **Contrato via ResourceKey:** Os itens exigem uma chave de recurso de registro (`ResourceKey<Item>`) atrelada ao dicionário de inicialização correto do motor do jogo (`BuiltInRegistries.ITEM`).
+4.  **Extensões do Fabric Loom (O mistério do `.setId()`):** Descobriu-se que métodos de conveniência como `.setId()` em propriedades de itens são injetados pela Fabric API em tempo de execução via Mixin. Para evitar que a IDE fique "cega" e acuse erro de compilação, a arquitetura foi adaptada para o padrão puro e universal do Java 21, injetando o contrato diretamente no método `Registry.register`.
+
+---
+
+## 📂 Estrutura Atual de Pacotes e Classes Implementadas (Módulo `main`)
+
+Os pacotes foram organizados sob o domínio corporativo `io.github.minezomboid`, blindando as regras de negócio de ponta a ponta:
+
+```text
+src/main/java/io/github/minezomboid/
+│
+├── MineZomboid.java               (Entrypoint principal / ModInitializer do servidor)
+│
+├── init/                          (Inicialização de Componentes e Contratos)
+│   ├── ModItemIds.java            (Helper funcional que gera as ResourceKeys dos itens)
+│   ├── ModItems.java              (Centralizador de instâncias e Factory Pattern de Registros)
+│   ├── PlasticBottleItem.java     (Classe inteligente da Garrafa Vazia - Raycast e Coleta de Fluidos)
+│   └── WaterBottleItem.java       (Classe inteligente da Garrafa Cheia - Consumo, Animação e Regra de Inventário)
+│
+└── utils/constants/
+    └── MineZomboidConstants.java  (Constantes globais como o MOD_ID)
+```
+
+---
+
+## 🎨 Arquitetura de Recursos Visuais e Geração de Dados (DataGen)
+O projeto utiliza **Data Generation** (infraestrutura como código) para automatizar a criação de JSONs, eliminando escrita manual de arquivos de configuração.
+*   **Sprites Utilizados:** Texturas customizadas transparentes extraídas em lote (resolução original de 32x32 pixels via SpriteSlice/Ezgif) salvos em `src/main/resources/assets/minezomboid/textures/item/`.
+*   **ModModelProvider (Módulo `main`):** Associa programmaticamente os itens criados ao template plano bidimensional (`ModelTemplates.FLAT_ITEM`).
+*   **ModLanguageProvider (Módulo `main`):** Configura a internacionalização (i18n). Vincula chaves brutas de tradução automáticas (como `item.minezomboid.plastic_bottle`) a strings amigáveis em inglês (`"Plastic Bottle"` / `"Water Bottle"`).
+*   **MineZomboidDataGenerator (Módulo `client`):** Entrypoint que intercepta o build do Gradle, lê os provedores de modelo e idioma da pasta `main`, e cospe os JSONs estruturados na pasta gerada.
+
+---
+
+## 🎯 Próximo Passo do Desenvolvimento
+O ciclo inicial do primeiro item do mod (Garrafas plásticas funcionais: beber água e coletar do rio) está **100% concluído, compilado e validado no servidor**. 
+
+Para prosseguir no portfólio backend do apocalipse zumbi, as opções mapeadas para implementação na pasta `main` são:
+1.  **Desenvolver o `MobSpawnFilter` (Pacote `world/`):** Interceptação de eventos de ciclo de vida biomas para cancelar o nascimento de monstros mágicos (Creepers, Esqueletos, Aranhas, Endermen), deixando o mapa puramente realista.
+2.  **Desenvolver o `BlockPunchMixin` (Pacote `mixin/`):** Injeção de bytecode no gerenciador de interações de blocos para proibir a quebra de árvores/pedras com a mão vazia, aplicando dano de sangramento localizado e efeitos colaterais na máquina de estados do jogador.
