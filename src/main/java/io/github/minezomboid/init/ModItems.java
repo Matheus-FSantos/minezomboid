@@ -22,15 +22,16 @@ public class ModItems {
     public static final ResourceKey<Item> PAPER_KEY = ModItemIds.create("paper");
     public static final ResourceKey<Item> MEDICAL_KIT_KEY = ModItemIds.create("medical_kit");
     public static final ResourceKey<Item> EMPTY_METAL_BOX_KEY = ModItemIds.create("empty_metal_box");
-
+    public static final ResourceKey<Item> CLOTH_KEY = ModItemIds.create("cloth");
 
     public static final Item PLASTIC_ITEM = register(PLASTIC_KEY, PlasticItem::new, new Item.Properties());
-    public static final Item PLASTIC_BOTTLE_ITEM = register(PLASTIC_BOTTLE_KEY, PlasticBottleItem::new, new Item.Properties());
+    public static final Item PLASTIC_BOTTLE_ITEM = register(PLASTIC_BOTTLE_KEY, PlasticBottleItem::new, new Item.Properties().stacksTo(20));
     public static final Item WATER_BOTTLE_ITEM = register(WATER_BOTTLE_KEY, WaterBottleItem::new, new Item.Properties().stacksTo(1));
     public static final Item DUCT_TAPE_ITEM = register(DUCT_TAPE_KEY, DuctTapeItem::new, new Item.Properties());
     public static final Item PAPER_ITEM = register(PAPER_KEY, PaperItem::new, new Item.Properties());
     public static final Item MEDICAL_KIT_ITEM = register(MEDICAL_KIT_KEY, MedicalKitItem::new, new Item.Properties().stacksTo(1));
-    public static final Item EMPTY_METAL_BOX_ITEM = register(EMPTY_METAL_BOX_KEY, EmptyMetalBox::new, new Item.Properties());
+    public static final Item EMPTY_METAL_BOX_ITEM = register(EMPTY_METAL_BOX_KEY, EmptyMetalBox::new, new Item.Properties().stacksTo(20));
+    public static final Item CLOTH_ITEM = register(CLOTH_KEY, ClothItem::new, new Item.Properties().stacksTo(20));
 
 
     public static void registerModItems() {
@@ -53,6 +54,7 @@ public class ModItems {
                 entries.accept(PAPER_ITEM);
                 entries.accept(MEDICAL_KIT_ITEM);
                 entries.accept(EMPTY_METAL_BOX_ITEM);
+                entries.accept(CLOTH_ITEM);
             });
     }
 

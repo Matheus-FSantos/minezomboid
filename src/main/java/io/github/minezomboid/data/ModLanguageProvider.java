@@ -21,5 +21,6 @@ public class ModLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.PAPER_ITEM, "Paper");
         translationBuilder.add(ModItems.MEDICAL_KIT_ITEM, "Medical Kit");
         translationBuilder.add(ModItems.EMPTY_METAL_BOX_ITEM, "Empty Metal Box");
+        translationBuilder.add(ModItems.CLOTH_ITEM, "Cloth");
     }
 }

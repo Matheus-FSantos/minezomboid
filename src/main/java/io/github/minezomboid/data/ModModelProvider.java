@@ -27,5 +27,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.PAPER_ITEM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.MEDICAL_KIT_ITEM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.EMPTY_METAL_BOX_ITEM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CLOTH_ITEM, ModelTemplates.FLAT_ITEM);
     }
 }

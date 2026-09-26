@@ -1,5 +1,5 @@
-[02:47:20] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21 with Fabric Loader 0.19.5
-[02:47:20] [main/INFO] (FabricLoader) Loading 55 mods:
+[14:56:48] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21 with Fabric Loader 0.19.5
+[14:56:48] [main/INFO] (FabricLoader) Loading 55 mods:
 	- fabric-api 0.102.0+1.21
 	- fabric-api-base 0.4.42+6573ed8cd1
 	- fabric-api-lookup-api-v1 1.6.68+b5597344d1
@@ -55,19 +55,19 @@
 	- minecraft 1.21
 	- minezomboid 1.0.0
 	- mixinextras 0.5.5
-[02:47:20] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/Users/matheus-fsantos/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/5f66cc9f59b8efaa942155a3d5a30599bf6640dd/sponge-mixin-0.17.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[02:47:20] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[02:47:20] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
-[02:47:21] [Datafixer Bootstrap/INFO] (Minecraft) 226 Datafixer optimizations took 120 milliseconds
-[02:47:24] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[02:47:24] [Render thread/INFO] (Minecraft) Setting user: Player673
-[02:47:24] [Render thread/INFO] (MineZomboid) MineZomboid - onInitialize - message: hello fabric world!
-[02:47:24] [Render thread/INFO] (ModItems) ModItems - registerModItems - message: registering mod item for minezomboid project
-[02:47:24] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[02:47:24] [Render thread/INFO] (FabricDataGenHelper) Running data generator for minezomboid
-[02:47:24] [Render thread/INFO] (Minecraft) Starting provider: MineZomboid/Model Definitions
-[02:47:24] [Render thread/INFO] (Minecraft) MineZomboid/Model Definitions finished after 32 ms
-[02:47:24] [Render thread/INFO] (Minecraft) Starting provider: MineZomboid/Language (en_us)
-[02:47:24] [Render thread/INFO] (Minecraft) MineZomboid/Language (en_us) finished after 155 ms
-[02:47:24] [Render thread/INFO] (Minecraft) All providers took: 189 ms
-[02:47:24] [Render thread/INFO] (Minecraft) Caching: total files: 8, old count: 8, new count: 9, removed stale: 0, written: 0
+[14:56:48] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/Users/matheus-fsantos/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/5f66cc9f59b8efaa942155a3d5a30599bf6640dd/sponge-mixin-0.17.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[14:56:49] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[14:56:49] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[14:56:49] [Datafixer Bootstrap/INFO] (Minecraft) 226 Datafixer optimizations took 131 milliseconds
+[14:56:52] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[14:56:52] [Render thread/INFO] (Minecraft) Setting user: Player399
+[14:56:52] [Render thread/INFO] (MineZomboid) MineZomboid - onInitialize - message: hello fabric world!
+[14:56:52] [Render thread/INFO] (ModItems) ModItems - registerModItems - message: registering mod item for minezomboid project
+[14:56:53] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[14:56:53] [Render thread/INFO] (FabricDataGenHelper) Running data generator for minezomboid
+[14:56:53] [Render thread/INFO] (Minecraft) Starting provider: MineZomboid/Model Definitions
+[14:56:53] [Render thread/INFO] (Minecraft) MineZomboid/Model Definitions finished after 24 ms
+[14:56:53] [Render thread/INFO] (Minecraft) Starting provider: MineZomboid/Language (en_us)
+[14:56:53] [Render thread/INFO] (Minecraft) MineZomboid/Language (en_us) finished after 134 ms
+[14:56:53] [Render thread/INFO] (Minecraft) All providers took: 159 ms
+[14:56:53] [Render thread/INFO] (Minecraft) Caching: total files: 9, old count: 9, new count: 10, removed stale: 0, written: 0
