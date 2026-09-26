@@ -34,3 +34,9 @@
 /give @s minezomboid:medical_kit
 /gamemode cre
 /gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode
+/gamemode survival
+/effect give @s minecraft:instant_damage 1 0
+/gamemode creative

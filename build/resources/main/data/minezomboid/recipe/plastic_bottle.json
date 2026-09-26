@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P P",
+    " P "
+  ],
+  "key": {
+    "P": { "item": "minezomboid:plastic" }
+  },
+  "result": {
+    "id": "minezomboid:plastic_bottle",
+    "count": 1
+  }
+}

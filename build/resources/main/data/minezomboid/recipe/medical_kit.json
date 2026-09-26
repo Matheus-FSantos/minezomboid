@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item":  "minezomboid:empty_metal_box" },
+    { "item":  "minezomboid:duct_tape"},
+    { "item":  "minezomboid:duct_tape"}
+  ],
+  "result": {
+    "id": "minezomboid:medical_kit",
+    "count": 1
+  }
+}
