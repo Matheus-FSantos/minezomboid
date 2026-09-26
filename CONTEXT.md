@@ -291,6 +291,7 @@ src/main/java/io/github/minezomboid/
 ├── init/
 │   ├── ModItemIds.java
 │   ├── ModItems.java
+│   ├── PlasticItem.java
 │   ├── PlasticBottleItem.java
 │   └── WaterBottleItem.java
 │
@@ -311,6 +312,10 @@ Helper responsável pela criação das `ResourceKey` dos itens.
 `ModItems.java`
 
 Centralização das instâncias e registros dos itens.
+
+`PlasticItem.java`
+
+Representa o material Plastic. Inicialmente possui comportamento próprio mínimo; seus usos são definidos principalmente através de recipes e futuras mecânicas.
 
 `PlasticBottleItem.java`
 
@@ -380,25 +385,172 @@ Entrypoint responsável por executar os providers de geração de dados.
 
 ---
 
+### Recipes / Crafting
+
+Foi implementada e validada a primeira receita manual do mod.
+
+A receita utiliza o sistema moderno de recipes do Minecraft e fica em:
+
+```text
+src/main/resources/data/minezomboid/recipe/
+└── plastic_bottle.json
+```
+
+A primeira versão foi `crafting_shapeless`, mas durante o aprendizado foi decidido que a Plastic Bottle deve exigir um formato específico em V. Portanto, a receita definitiva deve utilizar `crafting_shaped`.
+
+Formato conceitual da receita da Plastic Bottle:
+
+```text
+Plastic   vazio   Plastic
+vazio     Plastic  vazio
+```
+
+Ou:
+
+```text
+P . P
+. P .
+```
+
+Exemplo de recipe shaped:
+
+```json
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P P",
+    " P "
+  ],
+  "key": {
+    "P": {
+      "item": "minezomboid:plastic"
+    }
+  },
+  "result": {
+    "id": "minezomboid:plastic_bottle",
+    "count": 1
+  }
+}
+```
+
+### Conceitos aprendidos sobre IDs e assets
+
+Foi esclarecida a diferença entre o ID de um item e o caminho lógico de sua textura.
+
+```text
+minezomboid:plastic
+```
+
+representa o **ID do item registrado no Minecraft** e é o identificador utilizado em recipes.
+
+Já:
+
+```text
+minezomboid:item/plastic
+```
+
+representa o **recurso visual da textura**, utilizado pelo model do item.
+
+Fluxo visual:
+
+```text
+minezomboid:plastic
+        ↓
+models/item/plastic.json
+        ↓
+minezomboid:item/plastic
+        ↓
+textures/item/plastic.png
+```
+
+Portanto, recipes devem utilizar:
+
+```text
+minezomboid:plastic
+```
+
+e não:
+
+```text
+minezomboid:item/plastic
+```
+
+### Diferença entre Shapeless e Shaped
+
+`crafting_shapeless` significa que apenas os ingredientes e suas quantidades importam; suas posições na crafting table não importam.
+
+`crafting_shaped` significa que o padrão espacial dos ingredientes também faz parte da receita.
+
+Exemplo:
+
+```text
+Shapeless:
+Plastic + Plastic + Plastic
+→ posição irrelevante
+
+Shaped:
+P . P
+. P .
+→ formato obrigatório
+```
+
+### Separação de responsabilidades no crafting
+
+O comportamento do `PlasticItem` permanece simples:
+
+```java
+public class PlasticItem extends Item {
+    public PlasticItem(Properties properties) {
+        super(properties);
+    }
+}
+```
+
+A classe Java representa o item e seu eventual comportamento próprio.
+
+A recipe JSON representa a relação de crafting:
+
+```text
+3 Plastic
+   ↓
+Plastic Bottle
+```
+
+Não é necessário colocar a lógica de crafting dentro de `PlasticItem`.
+
+### Primeira recipe funcional
+
+A receita da Plastic Bottle foi criada manualmente e testada com sucesso dentro do Minecraft.
+
+Também foi identificado durante o teste que alterações no JSON precisam estar salvas antes de iniciar/testar o cliente; o problema observado durante a primeira tentativa provavelmente ocorreu porque o arquivo ainda não havia sido salvo.
+
+---
+
 # 📍 Estado Atual do Projeto
 
 O primeiro ciclo funcional do projeto foi concluído:
 
 ```text
+Plastic
+   ↓
+crafting shaped (formato em V)
+   ↓
 Plastic Bottle
-      ↓
+   ↓
 coleta de água
-      ↓
+   ↓
 Water Bottle
-      ↓
+   ↓
 consumo de água
 ```
 
-O sistema foi compilado e validado no servidor.
+O sistema de água foi compilado e validado no servidor.
 
 Também foi estabelecida a primeira identidade visual oficial do mod.
 
-### Itens atualmente planejados para a próxima etapa
+A primeira mecânica de crafting foi implementada e validada no Minecraft.
+
+### Itens atualmente planejados
 
 ```text
 Plastic
@@ -408,23 +560,33 @@ Duct Tape
 Medical Kit
 ```
 
-Neste momento, os quatro primeiros são apenas materiais base, enquanto o Kit Médico será posteriormente conectado ao sistema de tratamento/ferimentos.
+Neste momento, os materiais continuam sendo tratados de forma simples. O Plastic já possui sua primeira utilização através da receita da Plastic Bottle.
+
+O Medical Kit será posteriormente conectado ao sistema de tratamento/ferimentos.
 
 ---
 
 # 🧭 Próxima Etapa
 
-A próxima etapa imediata é adicionar os cinco novos itens base:
+O próximo objetivo de aprendizado é continuar criando recipes manualmente para consolidar o entendimento de:
 
 ```text
-Plastic
-Cloth
-Paper
-Duct Tape
-Medical Kit
+Recipe
+↓
+Shaped vs Shapeless
+↓
+Ingredients
+↓
+Pattern
+↓
+Key
+↓
+Result
 ```
 
-O foco inicial deve ser somente:
+Depois de dominar a criação manual, o sistema de recipes poderá ser integrado ao Data Generation.
+
+A implementação continua incremental:
 
 ```text
 Registro
@@ -436,6 +598,8 @@ Model
 Translation
 ↓
 Data Generation
+↓
+Recipe
 ↓
 Validação no Minecraft
 ```
@@ -497,6 +661,23 @@ A experiência jogando com amigos será utilizada para validar e ajustar as deci
 ### 8. Consistência visual
 
 Todo novo asset deve seguir o padrão visual estabelecido pelos primeiros itens.
+
+---
+
+# 🧠 Conhecimentos Práticos Adquiridos
+
+Durante a implementação das primeiras recipes, foram consolidados os seguintes conceitos:
+
+1. **Recipe não precisa estar dentro do `Item`**: crafting é um sistema separado e data-driven.
+2. **IDs de item e recursos visuais são diferentes**:
+   - `minezomboid:plastic` → item registrado.
+   - `minezomboid:item/plastic` → textura/recurso visual.
+3. **Shapeless** ignora a posição dos ingredientes.
+4. **Shaped** utiliza um `pattern` para definir a disposição dos ingredientes.
+5. O campo `key` associa símbolos do `pattern` aos itens utilizados.
+6. O `result` define o item produzido e sua quantidade.
+7. Uma recipe manual pode ser criada diretamente em `src/main/resources/data/minezomboid/recipe/`.
+8. Arquivos JSON precisam estar salvos antes de serem testados no cliente.
 
 ---
 
