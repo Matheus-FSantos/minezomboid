@@ -1,3 +1,8 @@
-// 1.21	2026-09-25T00:57:49.634835	MineZomboid/Model Definitions
+// 1.21	2026-09-26T02:47:24.70059	MineZomboid/Model Definitions
+272fb5a985aa421a8a327d75ee71079a6466bb4d assets/minezomboid/models/item/duct_tape.json
+60947c09537787dbb129304cd372e17d5e5ddf81 assets/minezomboid/models/item/medical_kit.json
+2e3277dfb3a59cd5d9baa9bb2c3970116b2808f1 assets/minezomboid/models/item/empty_metal_box.json
 eb28d7c0bac5f83b67fe98d8e67415304f417956 assets/minezomboid/models/item/water_bottle.json
 bf03a922c272072c24718f5cb85cf5693984eb2c assets/minezomboid/models/item/plastic_bottle.json
+59aa8a394ff280e2aa86c022e800754f6d41a6f3 assets/minezomboid/models/item/paper.json
+7347c918dd06285fe29f1792d6989186e31805bd assets/minezomboid/models/item/plastic.json

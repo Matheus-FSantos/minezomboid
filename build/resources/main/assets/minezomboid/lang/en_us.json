@@ -1,4 +1,9 @@
 {
+  "item.minezomboid.duct_tape": "Duct Tape",
+  "item.minezomboid.empty_metal_box": "Empty Metal Box",
+  "item.minezomboid.medical_kit": "Medical Kit",
+  "item.minezomboid.paper": "Paper",
+  "item.minezomboid.plastic": "Plastic",
   "item.minezomboid.plastic_bottle": "Plastic Bottle",
   "item.minezomboid.water_bottle": "Water Bottle"
 }

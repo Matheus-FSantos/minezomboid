@@ -14,7 +14,12 @@ public class ModLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder translationBuilder) {
+        translationBuilder.add(ModItems.PLASTIC_ITEM, "Plastic");
         translationBuilder.add(ModItems.PLASTIC_BOTTLE_ITEM, "Plastic Bottle");
         translationBuilder.add(ModItems.WATER_BOTTLE_ITEM, "Water Bottle");
+        translationBuilder.add(ModItems.DUCT_TAPE_ITEM, "Duct Tape");
+        translationBuilder.add(ModItems.PAPER_ITEM, "Paper");
+        translationBuilder.add(ModItems.MEDICAL_KIT_ITEM, "Medical Kit");
+        translationBuilder.add(ModItems.EMPTY_METAL_BOX_ITEM, "Empty Metal Box");
     }
 }

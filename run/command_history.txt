@@ -3,3 +3,34 @@
 /gamemode
 /gamemode survival
 /gamemode creative
+/
+/time day
+/
+/damage 100
+/damage
+/damage Player821 50
+/gamemode
+/gamemode survival
+/damage Player821 50
+/damage Player821 1
+/damage Player821 5
+/damage Player821 10
+/gamemode
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/effect give @s minecraft:instant_damage 1 0
+/gamemode survival
+/effect give @s minecraft:instant_damage 1 0
+/gamerule minecraft:natural_regeneration false
+/gamerule naturalRegeneration false
+/effect give @s minecraft:instant_damage 14 0
+/effect give @s minecraft:instant_damage 1 0
+/item medical_kit
+/give @s minezomboid:medical_kit
+/gamemode cre
+/gamemode creative

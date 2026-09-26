@@ -1,5 +1,6 @@
 package io.github.minezomboid;
 
+import io.github.minezomboid.data.ModSounds;
 import io.github.minezomboid.init.ModItems;
 import io.github.minezomboid.utils.constants.MineZomboidConstants;
 import net.fabricmc.api.ModInitializer;
@@ -16,6 +17,7 @@ public class MineZomboid implements ModInitializer {
 	public void onInitialize() {
 		MineZomboid.LOGGER.info("{} - onInitialize - message: hello fabric world!", getClass().getSimpleName());
 		ModItems.registerModItems();
+		ModSounds.registerModSounds();
 	}
 
 	public static ResourceLocation id(String path) {
